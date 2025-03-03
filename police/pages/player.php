@@ -77,7 +77,7 @@ if (isset($_SESSION['message'])) {
 
 function sendDiscordWebhook($title, $description, $footer, $timestamp)
 {
-    $webhookurl = "https://discord.com/api/webhooks/1236989238596337740/r8Xw0TkNrV9M7NWeydB5aNSzB6QwDgdABUOVE5kBmy7x8WyU1FMBImdcbGRtxShYTetC";
+    $webhookurl = "";
 
     $json_data = json_encode([
         "embeds" => [
@@ -126,7 +126,7 @@ function logPlayerVisit($username, $playerName) {
         mysqli_stmt_close($stmt);
     }
 
-    $webhookUrl = "https://discord.com/api/webhooks/1272821536604164106/GdDNd6-tWgPdFzdldBFFs6tvAJ0DY8l1eLK5HPJteiiA-VV2H41Eyhr-tOWng7i2SfWJ"; // Ensure this is correct
+    $webhookUrl = ""; // Ensure this is correct
     $timestamp = date("c");
     $title = "Tjek af KR";
     $description = "Betjent **{$username} - {$firstname} {$lastname}** har tjekket KR for **{$playerName}**.";

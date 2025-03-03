@@ -62,7 +62,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                             $_SESSION["job"] = 'police';
 
                             // Setup the webhook URL
-                            $webhookurl = "https://discord.com/api/webhooks/1237532863214256128/5SyxguoMsCYU7fer8YjER0sc2N3IgjL9jL_BDykTRJhlysbULvEX0tdyFD-FBKkldAwv";
+                            $webhookurl = "";
 
                             // Prepare data
                             $full_name = "$username - $firstname $lastname";

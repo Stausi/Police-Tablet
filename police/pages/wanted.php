@@ -13,7 +13,7 @@ $result = $link->query($sql);
 
 function sendDiscordWebhook($title, $description, $footer, $timestamp)
 {
-    $webhookurl = "https://discord.com/api/webhooks/1227749379507486730/jJxu8kUUgP4zmW1ErRnjLycfyN83RRa3mh1slJZzUGmxwAKYiNNdbhvBcmV3w4_iHJVL";
+    $webhookurl = "";
 
     $json_data = json_encode([
         "embeds" => [
