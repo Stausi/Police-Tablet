@@ -1,0 +1,13 @@
+{
+    "name": "stausi/drp-data",
+    "description": "Stausi Data Site",
+    "type": "project",
+    "autoload": {
+        "psr-4": {
+            "Stausi\\DrpData\\": "src/"
+        }
+    },
+    "require": {
+        "tecnickcom/tcpdf": "^6.6"
+    }
+}

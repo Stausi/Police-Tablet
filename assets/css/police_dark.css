@@ -1,0 +1,1635 @@
+@font-face {
+    font-family: politi;
+    src: url(../fonts/Politi-Regular.ttf);
+  }
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%;
+    margin: 0;
+    font-family: 'Lato', sans-serif;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+header {
+    display: flex;
+    margin: 0 7.5vw;
+}
+
+.header-wrapper {
+    width: 100%;
+    height: 6vh;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid #7a8287;
+    margin: 10px 0 20px 0;
+}
+
+button:hover {
+    cursor: pointer;
+}
+
+.logo-container, .nav-links, .login-links {
+    display: flex;
+    margin: 0;
+}
+
+.logo-container {
+    flex: 1;
+}
+
+.logo {
+    font-weight: 400;
+    margin: 5px;
+}
+
+.logo-container img {
+    width: 160px;
+}
+
+nav {
+    flex: 3;
+}
+
+.nav-links {
+    justify-content: space-around;
+    list-style: none;
+}
+
+.login-links {
+    list-style: none;
+    justify-content: flex-end;
+}
+
+.nav-link, .login-link {
+    color: #e6e6e6;
+    font-size: 1rem;
+    text-decoration: none;
+    display: inline-block;
+    max-width: 200px; /* specify the width you want */
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.nav-link:hover, .login-link:hover, .krimi a:hover {
+    color: #d4e741;
+    text-decoration: none;
+}
+
+.dropdown .dropbtn {
+    color: #e6e6e6;
+    font-size: 1rem;
+    text-decoration: none;
+    display: inline-block;
+    max-width: 200px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    padding: 0.5rem 1rem;
+    background: none;
+    border: none;
+}
+
+.navbar a:hover, .dropdown:hover .dropbtn, .dropbtn:focus {
+    color: #d4e741;
+    text-decoration: none;
+    outline: none;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #272b30;
+    min-width: 220px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+.dropdown-content a {
+    float: none;
+    color: #e6e6e6;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+}
+
+.show {
+    display: block;
+}
+
+.login-link {
+    margin: 10px;
+}
+
+.login {
+    flex: 1;
+}
+
+.login-form {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    min-height: 100vh;
+    background-image: url(../img/background.png);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+    background-size: cover;
+}
+
+.login-form .wrapper {
+    padding: 10px 20px;
+    background-color: #fff;
+    border: 1px solid #eeeeee;
+    border-radius: 5px;
+    -webkit-box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.75);
+    box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.75);
+}
+
+.login-form img {
+    width: 200px;
+    margin-bottom: 20px;
+}
+
+.login-form h2 {
+    text-align: center;
+    margin: 15px 0;
+}
+
+.login-form form {
+    width: 400px;
+    text-align: start;
+}
+
+.login-form form #submit {
+    text-align: center;
+    margin: 25px 0;
+}
+
+.login-form form #submit input {
+    width: 200px;
+    background-color: #ff0000;
+    border-color: #ff0000;
+}
+
+main {
+    display: flex;
+    margin: 0 10vw;
+    margin-bottom: 20px;
+}
+
+main.ticketEmne, main.licenseEmne {
+    flex-flow: column;
+}
+
+.employed, .tickes-wrapper, .wanted-wrapper, .krimi, .stock, .gangs {
+    width: 100%;
+}
+
+.wanted-wrapper .wanted-header .table-responsive, .daily-header {
+    overflow: unset;
+}
+
+#big-text-table {
+    margin: 0;
+}
+
+.wanted-wrapper .wanted-header tbody, .daily-header{
+    display: flex;
+    width: 100%;
+    flex-flow: column;
+}
+
+.wanted-wrapper .wanted-header tbody tr, .daily-header{
+    display: flex;
+    flex: 1;
+}
+
+.wanted-wrapper .wanted-header tbody th,
+.wanted-wrapper .wanted-header tbody td {
+    flex: 1;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.gangs .gang-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.gangs .gang-header h2 {
+    padding: 5px 20px;
+    margin: 0;
+    color: #e6e6e6;
+    width: auto;
+}
+
+.gangs .gang-header h2.created {
+    font-size: 17px;
+}
+
+.gangs .gang-users {
+    border-top: 1px solid #272a2f;
+    border-bottom: 1px solid #272a2f;
+    background-color: #7a8287;
+}
+
+.gangs .gang-users a {
+    display: flex;
+    background-color: #44494d;
+    align-items: center;
+    padding: 5px;
+    border: none;
+    width: 100%;
+    border-top: 1px solid #272a2f;
+    border-bottom: 1px solid #272a2f;
+}
+
+.gangs .gang-users a:hover {
+    text-decoration: none;
+}
+
+.gangs .gang-users a i {
+    font-size: 1.25rem;
+    margin-right: 10px;
+    color: #e6e6e6;
+}
+
+.gangs .gang-users a h3 {
+    margin: 0px;
+    color: #e6e6e6;
+}
+
+.afdelinger, .tickets-emner {
+    margin-bottom: 2em;
+}
+
+.afdeling, .tickets-header, .krim-header, .department-header {
+    background-color: #3a3f44;
+    border: 1px solid #272a2f;
+    border-radius: 3px;
+}
+
+.department-header {
+    margin-bottom: 20px;
+}
+
+.department-header h2 {
+    padding: 5px;
+    margin: 0;
+    color: #e6e6e6;
+    width: 100%;
+    text-transform: uppercase;
+    text-align: center;
+}
+
+.afdeling h2 {
+    padding: 5px;
+    margin: 0;
+    color: #e6e6e6;
+    width: 100%;
+    font-size: 21px;
+}
+
+.krim-header {
+    margin-top: 20px;
+}
+
+.tickets-header h2, .wanted-header h2, .krim-header h2 {
+    padding: 8px;
+    margin: 0;
+    color: #e6e6e6;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.tickets-header h2:hover, .wanted-header h2:hover {
+    cursor: pointer;
+}
+
+.tickes-wrapper .search-text {
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+}
+
+.tickes-wrapper .search-text button.no-users {
+    background: none;
+    border: none;
+}
+
+.tickes-wrapper .search-text button.no-users h3 {
+    font-size: 22px;
+    margin: 0;
+}
+
+.tickes-wrapper .search-text button.no-users h3:hover {
+    color: #d4e741;
+}
+
+.tickes-wrapper .search-text button.no-users:focus {
+    outline: none;
+}
+
+.tickes-wrapper .search-text p {
+    margin: 0;
+    text-align: center;
+}
+
+.active:after {
+    content: "\2212";
+}
+
+.afdeling-content, .gangs-content {
+    display: flex;
+}
+
+.afdeling-content .buttons, .gangs-content .buttons {
+    margin: 6px 0;
+    width: 100%;
+    justify-content: flex-end;
+}
+
+.afdeling-content .buttons a, .gangs-content .buttons a {
+    width: 240px;
+    padding: 5px;
+    font-size: 14px;
+    color: #fff;
+    border-radius: 3px;
+    text-align: center;
+    margin: 0 10px;
+    background: none;
+    text-transform: uppercase;
+}
+
+.afdeling-content .buttons a:hover, .gangs-content .buttons a:hover {
+    color: #d4e741;
+    text-decoration: none;
+    background: none;
+}
+
+.afdeling-content .buttons a i, .gangs-content .buttons a i {
+    margin-right: 5px;
+}
+
+.users, .tickets, .wanted, .kr-history {
+    border-top: 1px solid #272a2f;
+    border-bottom: 1px solid #272a2f;
+    background-color: #7a8287;
+}
+
+.user-popup {
+    display: flex;
+    background-color: #44494d;
+    align-items: center;
+    padding: 5px;
+    border: none;
+    width: 100%;
+    border-top: 1px solid #272a2f;
+    border-bottom: 1px solid #272a2f;
+}
+
+
+
+
+.user-popup i {
+    font-size: 1.25rem;
+    margin-right: 10px;
+    color: #e6e6e6;
+}
+
+.user-popup h3 {
+    margin: 0px;
+    color: #e6e6e6;
+}
+
+.user-popup:hover {
+    cursor: pointer;
+}
+
+.user-popup:focus {
+    outline: none;
+}
+
+.wanted-header .modal-dialog {
+    max-width: 700px;
+}
+
+.modal-body h2 {
+    padding: 0;
+    margin: 5px 0;
+    font-size: 1.50em;
+}
+
+.modal-body h2.number {
+    margin-bottom: 30px;
+}
+
+.modal-body p {
+    padding: 0;
+    margin: 5px 0;
+}
+
+.create-user {
+    width: 40%;
+    margin: auto;
+}
+
+.create-user #submit {
+    text-align: center;
+}
+
+.create-user #submit input {
+    width: 200px;
+}
+
+.create-user #admin {
+    text-align: center;
+}
+
+.create-user h2 {
+    margin-bottom: 30px;
+}
+
+.create-afdeling {
+    width: 50%;
+    margin: auto;
+    text-align: center;
+}
+
+.create-afdeling #submit, .update {
+    text-align: center;
+}
+
+.create-afdeling #submit input {
+    width: 200px;
+}
+
+.create-afdeling #admin {
+    text-align: center;
+}
+
+.create-afdeling h2 {
+    margin-bottom: 30px;
+}
+
+.wanted-header table, .player table, .activity table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+.tickets-emner table {
+    display: block;
+    border-collapse: collapse;
+    width: 100%;
+    overflow: hidden;
+    margin-bottom: 0;
+}
+
+.tickets-header.collapsed table {
+    display: none;
+}
+
+.tickets-header h2:after {
+    content: '\2212';
+    color: white;
+    font-weight: bold;
+    float: right;
+    margin-right: 5px;
+}
+
+.tickets-header.collapsed h2:after {
+    content: '\002B';
+    color: white;
+    font-weight: bold;
+    float: right;
+    margin-right: 5px;
+}
+
+.tickets-emner table tbody {
+    width: 100%;
+    display: table;
+}
+
+.tickets td, .tickets th, .wanted td, .wanted th, .player th, .player td, .activity th, .activity td {
+    border: 0px solid #ddd;
+    text-align: left;
+    padding: 8px;
+}
+
+.player td.kr_action {
+    display: flex;
+}
+
+.tickets td button {
+    width: 100%;
+    border: none;
+    font-size: 32px;
+    background: none;
+}
+
+.tickets td button:focus {
+    outline: none;
+}
+  
+.tickets tr:nth-child(even), .wanted tr:nth-child(even) {
+    background-color: #eee;
+}
+
+.wanted-text {
+    display: flex;
+    align-items: center;
+}
+
+.wanted-text button {
+    width: 120px;
+    margin-right: 10px;
+    padding: 5px 10px;
+    font-size: 12px;
+    color: #fff;
+    border-radius: 3px;
+    text-align: center;
+    font-weight: 700;
+    background: none;
+    text-transform: uppercase;
+}
+
+.wanted-text button:hover {
+    cursor: pointer;
+    color: #d4e741;
+    text-decoration: none;
+    background: none;
+}
+
+.wanted-header #submit {
+    text-align: center;
+}
+
+.wanted td a {
+    text-decoration: none;
+    color: black;
+}
+
+.wanted td a:hover {
+    color: #d9230f;
+}
+
+textarea:read-only:hover {
+    cursor: not-allowed;
+}
+
+input:read-only:hover {
+    cursor: not-allowed;
+}
+
+input.checkbox:read-only:hover {
+    cursor: pointer;
+}
+
+.krimi table {
+    border-radius: 3px;
+}
+
+.krimi-search {
+    width: 70%;
+    margin: auto;
+    margin-top: 10px;
+    margin-bottom: 40px;
+}
+
+.krimi a {
+    text-decoration: none;
+    color: #e6e6e6;
+}
+
+.links {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+}
+
+.krimi #result {
+    display: flex;
+    justify-content: center;
+}
+
+.krimi .search-text {
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+}
+
+.krimi .search-text button.no-users {
+    background: none;
+    border: none;
+}
+
+.krimi .search-text button.no-users h3 {
+    font-size: 22px;
+    margin: 0;
+}
+
+.krimi .search-text button.no-users h3:hover {
+    color: #d4e741;
+}
+
+.krimi .search-text button.no-users:focus {
+    outline: none;
+}
+
+.krimi .modal-dialog {
+    max-width: 700px;
+}
+
+.krimi .btn-primary {
+    width: 200px;
+}
+
+footer {
+    margin-top: auto;
+    width: 100%;
+    height: 42px;
+    background: #51595f;
+    display: flex;
+}
+
+.footer {
+    display: flex;
+    margin: auto;
+    justify-content: center;
+}
+
+.footer h1 {
+    font-size: 18px;
+    margin: 0;
+    padding: 10px 0;
+}
+
+.addedContent {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    height: 50px;
+    display: flex;
+    z-index: 99;
+    background: #7a8287;
+    border: 1px solid #7a8287;
+}
+
+.content-wrapper {
+    width: 70%;
+    margin: auto;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.addedContent .ticket, .addedContent .prison, .addedContent .klip, .addedContent .addButton, .addedContent .listButton {
+    display: flex;
+}
+
+.content-wrapper h3 {
+    font-size: 23px;
+    margin-top: 7px;
+}
+
+.content-wrapper h3.title {
+    margin-right: 6px;
+}
+
+.content-wrapper h3.type {
+    margin-left: 6px;
+}
+
+.content-wrapper button {
+    border: none;
+    width: 180px;
+    height: 32px;
+    background: #2aa198;
+    color: #fff;
+    font-weight: bold;
+    border-radius: 3px;
+}
+
+.listButton button {
+    background: #269ec3;
+}
+
+.player button.edit, .player button.delete {
+    border: none;
+    background: none;
+    font-size: 28px;
+    display: flex;
+    color: #2aa198;
+    margin-right: 5px;
+}
+
+.player button.delete {
+    color: #ec4d49;
+}
+
+.player button.edit:focus, .player button.delete:focus {
+    outline: none;
+}
+
+.myprofile, .applications, .information, .action, .user {
+    width: 80%;
+    margin: auto;
+    margin-bottom: 40px;
+}
+
+.myprofile h1 {
+    text-align: center;
+}
+
+.aktioner {
+    margin-top: 10px;
+}
+
+.speciel-unit, .others, .straf, .print-straf {
+    display: flex;
+    justify-content: space-between;
+    margin: 16px 0;
+}
+
+.unit {
+    width: 100%;
+    padding: 10px;
+    border-radius: 6px;
+    border: 1px solid #d6d6d6;
+    background: #eeeeee;
+    margin: 0 10px;
+}
+
+.unit a {
+    color: #212529;
+    font-weight: bold;
+}
+
+.unit a:hover {
+    color: #d9230f;
+    text-decoration: none;
+}
+
+.aktioner-subject {
+    background-color: #eee;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+}
+
+.aktioner-subject h2 {
+    padding: 5px;
+    margin: 0;
+    color: #000;
+}
+
+.aktioner-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.aktioner-header button {
+    width: 120px;
+    margin-left: 20px;
+    background-image: linear-gradient(#e72510, #d9230f 6%, #cb210e);
+    padding: 5px 10px;
+    font-size: 16px;
+    color: #fff;
+    border: 1px solid #a91b0c;
+    border-radius: 3px;
+    text-align: center;
+    margin-right: 10px;
+}
+
+.aktioner-body {
+    padding: 5px;
+    background-color: #fcfcfc;
+    display: flex;
+    justify-content: space-between;
+    border: 1px solid #ddd;
+}
+
+.aktioner-body button {
+    background: none;
+    border: none;
+}
+
+.aktioner-body button:focus {
+    outline: none;
+}
+
+.krModal .modal-dialog {
+    max-width: 800px;
+}
+
+.krModal #cases .case {
+    background-color: #23272b;
+    border: 0px solid #7a8287;
+    border-radius: 3px;
+    padding: 5px;
+    margin: 10px 0;
+}
+
+.krModal #cases h2 {
+    border-bottom: 1px solid #7a8287;
+}
+
+.krModal #cases .info {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid #7a8287;
+    padding-bottom: 5px;
+    color: #e6e6e6;
+}
+
+.employed .modal-footer {
+    justify-content: space-between;
+}
+
+.activity {
+    width: 80%;
+    margin: auto;
+}
+
+.playeredit {
+    width: 50%;
+    margin: auto;
+}
+
+.mid-line {
+    border-bottom: 1px solid #7a8287
+}
+
+.employedments {
+    margin-bottom: 40px;
+}
+
+.profile {
+    margin: 20px 0;
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+}
+
+.profile-pictures {
+    display: flex;
+}
+
+.profile-pictures img {
+    max-width: 20vw;
+    border-radius: 3px;
+}
+
+.profile-informations {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+.profile-informations .profile-information {
+    flex: 1;
+    display: flex;
+    flex-flow: column;
+}
+
+.profile-informations .profile-information:first-child {
+    align-items: flex-end;
+    margin-right: 20px;
+}
+
+.profile-informations .profile-information p {
+    font-size: 20px;
+    margin: 0;
+}
+
+.profile-informations .profile-information p span {
+    text-decoration: underline;
+}
+
+.profile-actions {
+    margin: 20px 0;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.profile-actions .profile-action {
+    display: flex;
+}
+
+.profile-actions .profile-action button {
+    flex: 1;
+    min-width: 200px;
+    padding: 5px;
+    font-size: 16px;
+    color: #fff;
+    background: #00AF66;
+    border: 1px solid #008c51;
+    border-radius: 3px;
+}
+
+.profile-actions .profile-action a {
+    flex: 1;
+    min-width: 200px;
+    height: 100%;
+    color: #fff;
+    background: #00AF66;
+    border: 1px solid #008c51;
+    border-radius: 3px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.profile-actions .profile-action a:hover {
+    text-decoration: none;
+}
+
+.profile-actions .profile-action span {
+    margin-left: 10px;
+}
+
+.action .action-column {
+    padding: 4px;
+    color: #fff;
+    background: #00AF66;
+    border: 1px solid #008c51;
+    border-radius: 3px;
+}
+
+.action .action-column h1 {
+    margin: 0;
+    font-size: 16px;
+}
+
+.manage-afdelinger {
+    display: flex;
+    flex-flow: column;
+    margin: 0 10vw;
+}
+
+.manage-afdelinger .manage-afdeling {
+    display: flex;
+    margin: 10px 0;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.manage-afdelinger input {
+    text-align: center;
+    margin: 0;
+    height: 35px;
+}
+
+.manage-afdelinger input.id {
+    width: 50px;
+}
+
+.manage-afdelinger input.btn,
+.manage-afdelinger button,
+.manage-afdelinger .manage-afdeling a {
+    text-align: center;
+    height: auto;
+    padding: 5px 20px;
+    height: 35px;
+}
+
+.form-group#prison input:hover, .form-group#vehicle input:hover, .form-group#drugs input:hover {
+    cursor: pointer;
+}
+
+.manage-afdelinger p span {
+    text-decoration: underline;
+}
+
+.modal-header .close {
+    color: #FFF;
+}
+h1, h2, h3, h4, h5, h6 {
+    color: #e6e6e6;
+}
+
+.addkrim-button {
+    background-color: Transparent;
+    background-repeat:no-repeat;
+    border: none;
+    overflow: hidden;
+    outline:none;
+    color: #e6e6e6;
+    font-size: 20px;
+}
+
+.addkrim-button:focus {
+    outline: none;
+}
+
+.addkrim-button-text:hover {
+    color: #d4e741;
+}
+
+a:hover {
+    color: #d4e741;
+}
+
+.fleet-wrapper {
+    width: 100%;
+    margin-bottom: 20vh;
+}
+
+.fleet-uncategorized, .fleet-category {
+    background-color: #3a3f44;
+    border: 1px solid #272a2f;
+    border-radius: 3px;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+.fleet-uncategorized-list, .fleet-categorized-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+}
+
+.fleet-uncategorized h1 {
+    margin: 0;
+    margin-left: 5px;
+    margin-bottom: 5px;
+    padding-bottom: 5px;
+    border-bottom: 1px solid #7a8287;
+    font-size: 2rem;
+}
+
+.fleet-user-container {
+    display: flex;
+    background-color: rgba(255,255,255,0.05);
+    width: calc(20% - 10px);
+    height: 75px;
+    margin: 5px;
+    padding: 5px;
+    color: #e6e6e6;
+}
+
+.fleet-user-informations {
+    flex: 90%;
+    display: flex;
+    flex-flow: column;
+    justify-content: space-around;
+}
+
+.fleet-user-informations i {
+    width: 20px;
+    height: 20px;
+    line-height: 20px;
+    margin-right: 5px;
+    text-align: center;
+}
+
+.fleet-user-icons {
+    flex: 10%;
+    display: flex;
+    flex-flow: column;
+    justify-content: space-around;
+    position: relative;
+}
+
+.fleet-user-icons button {
+    border: none;
+    background: none;
+    color: #e6e6e6;
+    position: relative;
+    width: 20px;
+    height: 20px;
+}
+
+.fleet-user-icons button i, .fleet-user-icons a i {
+    width: 20px;
+    height: 20px;
+    line-height: 20px;
+    font-size: 14px;
+}
+
+.fleet-user-icons a {
+    text-align: center;
+    width: 20px;
+    height: 20px;
+}
+
+.fleet-user-task {
+    display: flex;
+    align-items: center;
+    height: 20px;
+}
+
+.fleet-user-task i {
+    margin-top: 2px;
+}
+
+.fleet-user-task p {
+    margin: 0;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    width: 100%;
+}
+
+.fleet-user-icons button:hover {
+    color: #d4e741;
+    text-decoration: none;
+}
+
+.fleet-user-icons a:hover {
+    color: #d4e741;
+    text-decoration: none;
+}
+
+.fleet-user-icons button:focus {
+    outline: none;
+}
+
+.fleet-user-icons-content {
+    display: none;
+    position: absolute;
+    min-width: 160px;
+    z-index: 1;
+    background-color: #272b30;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    top: -30px; 
+    left: 100%;
+}
+
+.fleet-user-icons-content a {
+    color: #e6e6e6;
+    padding: 8px 12px;
+    text-decoration: none;
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+.fleet-user-icons-content a:hover {
+    color: #d4e741;
+    text-decoration: none;
+}
+
+.fleet-user-icons button.hoverBtn:hover .fleet-user-icons-content {
+    display: block;
+}
+
+.fleet-categorized {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+}
+
+.fleet-category {
+    flex: 100%;
+    margin: 0 0 10px;
+}
+
+.fleet-category .fleet-user-container {
+    width: calc(20% - 10px);
+}
+
+.fleet-category h1 {
+    margin: 0;
+    margin-left: 5px;
+    margin-bottom: 5px;
+    padding-bottom: 5px;
+    border-bottom: 1px solid #7a8287;
+    font-size: 2rem;
+}
+
+#big-text-table td p.big-text {
+    overflow: hidden;
+    max-width: 25ch;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    margin: 0;
+}
+
+
+
+
+
+
+/* Tilføjer grænser til hele siden for at efterligne eksemplet */
+
+
+/* Grid layout for rapport bokse */
+.reports-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 bokse pr. række */
+    grid-gap: 20px; /* Afstand mellem bokse */
+    margin: 20px 0; /* Margin omkring hele grid */
+}
+
+/* Stil for hver rapport boks */
+.report-box {
+    border: 1px solid #e6e6e6; /* Ramme omkring boksen */
+    border-radius: 5px; /* Afrundede hjørner */
+    padding: 20px; /* Polstring indeni */
+    background-color: rgba(255,255,255,0.05); /* Baggrundsfarve for boksen */
+    display: flex;
+    flex-direction: column; /* Stabler indholdet vertikalt */
+    height: 280px; /* Fast højde på boksen */
+    justify-content: space-between; /* Fordeler indholdet med plads imellem */
+    box-shadow: #000 0px 0px 10px 0px; /* Skygge omkring boksen */
+
+}
+
+.report-box2 {
+    display: flex;
+    background-color: rgba(255,255,255,0.05);
+    width: calc(20% - 10px);
+    height: 75px;
+    margin: 5px;
+    padding: 5px;
+    color: #e6e6e6;
+}
+
+/* Tilpasser layoutet til skærme med mindre bredde */
+@media (max-width: 900px) {
+    .report-grid {
+        grid-template-columns: repeat(2, 1fr); /* 2 bokse pr. række på mindre skærme */
+    }
+}
+
+@media (max-width: 600px) {
+    .report-grid {
+        grid-template-columns: 1fr; /* 1 boks pr. række på meget små skærme */
+    }
+}
+
+/* Stil for overskrifter i boksene */
+.report-box h3 {
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+
+    margin-bottom: 10px; /* Afstand under overskrift */
+    font-weight: bold;;
+}
+
+/* Stil for tekst i boksene */
+.report-box p {
+    color: #e6e6e6; /* Lys tekstfarve */
+    margin-bottom: 5px; /* Afstand under hver paragraf */
+}
+
+/* Stil for handlinger (links) i boksene */
+.report-box a {
+    color: #e6e6e6; /* Lys tekstfarve for links */
+    text-decoration: none; /* Ingen understregning af links */
+    margin-top: auto; /* Placerer links nederst i boksen */
+     
+}
+
+
+.report-box a:hover {
+    text-decoration: underline; /* Understregning ved hover */
+}
+
+.daily-button{
+    display: flex;
+    justify-content: end;
+    text-align: right;
+}
+.daily-header{
+    display: flex;
+    flex-direction: column; /* Arrangerer elementerne vertikalt */
+    width: 100%;
+    font-size: 14px;
+}
+
+.daily-text {
+    display: flex;
+    justify-content: space-between; /* Adskiller indholdet */
+    align-items: center; /* Centrerer indholdet vertikalt */
+    width: 100%; /* Udnytter den fulde bredde */
+   
+    
+}
+
+.daily-text button, .daily-text button {
+    width: 160px;
+    margin-right: 10px;
+    padding: 5px 10px;
+    font-size: 16px;
+    color: #fff;
+    border-radius: 3px;
+    text-align: center;
+    font-weight: 700;
+    background: none;
+    text-transform: uppercase;
+    border: none;
+    
+}
+
+.daily-text button:hover, .daily-text button:hover {
+    cursor: pointer;
+    color: #d4e741;
+    text-decoration: none;
+    background: none;
+}
+
+.daily-text h2 {
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 10px;
+    margin-bottom: 5px; /* Tilføjer mere plads under stregen til knappen */
+    width: 100%;
+}
+
+.daily-button {
+    display: flex;
+    justify-content: flex-end; /* Justerer knappen til højre */
+    width: 100%; /* Sikrer at .daily-button fylder hele bredden */
+    padding-top: -10px; 
+}
+
+.short-text {
+    white-space: normal; /* Sikrer at teksten ikke brydes ned på nye linjer */
+    overflow: hidden; /* Skjuler overflow af tekst */
+    text-overflow: ellipsis; /* Tilføjer ellipser (...) efter afkortet tekst */
+    max-width: none; /* Eller en anden bredde, afhængig af dit design */
+    display: block; /* Eller inline-block, afhængig af konteksten */
+}
+
+.bold-text {
+    font-weight: bold;
+}
+.user-popupDaily {
+    display: flex;
+    align-items: center;
+    background-color: #44494d;
+    padding: 10px 20px; /* Øget padding for større visuel størrelse */
+    border: none;
+    width: auto; /* Du kan sætte en specifik bredde eller bruge 'auto' */
+    border-top: 1px solid #272a2f;
+    border-bottom: 1px solid #272a2f;
+    font-size: 16px; /* Større skriftstørrelse gør teksten mere læselig og knappen større */
+}
+
+.report-content {
+    flex: 1; /* Får indholdet til at fylde tilgængeligt rum */
+}
+
+.report-footer {
+    margin-top: auto; /* Skubber footer til bunden */
+    text-align: left;
+}
+
+.btn-custom-small {
+    padding: 0.25rem 0.5rem; /* Reducer padding */
+    font-size: 0.875rem; /* Mindre skriftstørrelse */
+    line-height: 1.5; /* Standard line-height for god form */
+    border-radius: 0.2rem; /* Let afrundede hjørner for estetik */
+}
+
+
+
+
+/*WANTED SIDEN CSS*/
+
+.wanted-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 bokse pr. række */
+    grid-gap: 20px; /* Afstand mellem bokse */
+    margin: 20px 0; /* Margin omkring hele grid */
+}
+
+
+/* Stil for overskrifter i wanted boksene */
+.wanted-box h3 {
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    margin-bottom: 10px; /* Afstand under overskrift */
+    font-weight: bold;;
+}
+
+/* Stil for tekst i wanted boksene */
+.wanted-box p {
+    color: #e6e6e6; /* Lys tekstfarve */
+    margin-bottom: 5px; /* Afstand under hver paragraf */
+}
+
+/* Stil for handlinger (links) i wanted boksene */
+.wanted-box a {
+    color: #e6e6e6; /* Lys tekstfarve for links */
+    text-decoration: none; /* Ingen understregning af links */
+    margin-top: auto; /* Placerer links nederst i boksen */
+}
+
+.wanted-box a:hover {
+    text-decoration: underline; /* Understregning ved hover */
+}
+
+
+.wanted-header{
+    display: flex;
+    flex-direction: column; /* Arrangerer elementerne vertikalt */
+    width: 100%;
+    font-size: 14px;
+}
+
+.wanted-text {
+    display: flex;
+    justify-content: space-between; /* Adskiller indholdet */
+    align-items: center; /* Centrerer indholdet vertikalt */
+    width: 100%; /* Udnytter den fulde bredde */
+}
+.wanted-text h2 {
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 10px;
+    margin-bottom: 5px; /* Tilføjer mere plads under stregen til knappen */
+    width: 100%;
+}
+
+.short-text {
+    white-space: normal; /* Sikrer at teksten ikke brydes ned på nye linjer */
+    overflow: hidden; /* Skjuler overflow af tekst */
+    text-overflow: ellipsis; /* Tilføjer ellipser (...) efter afkortet tekst */
+    max-width: none; /* Eller en anden bredde, afhængig af dit design */
+    display: block; /* Eller inline-block, afhængig af konteksten */
+}
+
+
+
+
+/* Stil for hver wanted boks */
+.wanted-box {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    border: 1px solid #e6e6e6;
+    border-radius: 5px;
+    padding: 20px;
+    background-color: rgba(255,255,255,0.05);
+    box-shadow: #000 0px 0px 10px 0px;
+    color: #e6e6e6;
+    margin-bottom: 20px;
+    position: relative;
+}
+
+.wanted-img {
+    flex: 0 0 auto; /* Billedet krymper ikke og vokser ikke */
+    width: 120px; /* Fast bredde */
+    height: 140px; /* Fast højde */
+    margin-right: 20px; /* Margin til højre for billedet */
+    display: flex;
+    flex-direction: column; /* Arrangerer indholdet vertikalt */
+}
+
+
+.wanted-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.wanted-firstinfo {
+    display: flex;
+    justify-content: space-between;
+}
+
+
+.wanted-action {
+    align-self: flex-start; /* Aligner knappen til venstre under billedet */
+    order: 2; /* Sørger for at knappen kommer efter billedet i flexbox flowet */
+    margin-top: 10px; /* Margin mellem billede og knap */
+}
+.wanted-content {
+    order: 1; /* Sørger for at indholdet vises mellem billedet og knappen */
+}
+
+
+.custom-modal-size {
+    max-width: 800px; /* Øger bredden på modalen */
+}
+.remove-wanted-spacing {
+    margin-top: 0px;
+}
+
+/*STATISTIK*/
+.statistics-container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 20px auto;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.statistics-section {
+    background: #272b30; /* Mørk baggrundsfarve */
+    color: #ffffff; /* Hvid tekst for bedre kontrast */
+    border: 1px solid #434a52; /* Lidt lysere grå kant for at skille sektionerne ad */
+    padding: 20px;
+    border-radius: 5px;
+}
+
+.section-header {
+    margin-top: 0;
+    color: #ffffff; /* Hvid tekst */
+}
+
+.statistics-table {
+    width: 100%;
+    border-collapse: collapse;
+    color: #ffffff; /* Hvid tekst */
+}
+
+.table-header {
+    background-color: #434a52; /* Lidt lysere grå end baggrunden for kontrast */
+    color: #ffffff; /* Hvid tekst */
+}
+
+.header-item, .row-item {
+    text-align: left;
+    padding: 8px;
+    border-bottom: 1px solid #555; /* Mørkere grå bord til rækker for subtil separation */
+}
+
+.header-item.amount, .row-item.amount { /* Klasser for 'Antal' kolonnen */
+    text-align: right; /* Teksten højrejusteres */
+}
+
+.category-section {
+    margin-top: 20px;
+}
+
+.category-header {
+    color: #ffffff; /* Hvid tekst */
+}
+
+.sub-category {
+    padding: 10px;
+    margin-top: 10px;
+    background-color: #313740; /* Lidt lysere end hovedsektionsfarven */
+    border-radius: 5px;
+}
+
+.sub-category-header {
+    padding-top: 20px; /* Tilføjer lidt ekstra plads før underkategorien */
+    text-align: left;
+    font-weight: bold;
+    color: #ffffff;
+}
+
+.sub-category-list {
+    background-color: #313740; /* Ens med sub-category baggrund */
+    border-radius: 5px;
+    padding: 10px; /* Tilføjer padding på alle sider */
+    box-sizing: border-box; /* Sørger for at padding og border er inkluderet i elementets totale bredde */
+}
+
+.custom-list {
+    list-style: none; /* Fjerner punkttegn */
+    margin: 0; /* Nulstiller margin */
+    padding: 0; /* Nulstiller padding */
+    box-sizing: border-box; /* Sørger for at padding og border er inkluderet i elementets totale bredde */
+}
+
+.custom-list-item {
+    color: #ffffff; /* Hvid tekst for kontrast */
+    margin-bottom: 5px; /* Margin mellem listepunkter */
+    padding: 0 10px; /* Tilføjer padding på venstre og højre, men ikke toppen og bunden */
+    box-sizing: border-box; /* Sørger for at padding og border er inkluderet i elementets totale bredde */
+}
+
+/* Fjerner den flydende 'Antal' overskrift, som ikke placeres korrekt */
+.sub-category-header::after {
+    content: '';
+    clear: both;
+}
+
+/* Tilføjer 'Antal' som en separat element for bedre kontrol */
+.amount-header {
+    text-align: right;
+    padding-right: 20px;
+    color: #ffffff;
+    margin-bottom: 5px; /* Sikrer konsistent margin som sub-category-header */
+}
+
+.sub-category-item {
+    background-color: #313740; /* Ens med sub-category baggrund */
+}

@@ -1,0 +1,124 @@
+.user-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 25px;
+}
+
+.user-header-text, .user-header-buttons {
+    display: flex;
+    flex: 1;
+}
+
+.user-header-text {
+    justify-content: flex-start;
+}
+
+.user-header-buttons {
+    justify-content: space-around;
+}
+
+.user-header-buttons button {
+    padding: 5px;
+    font-size: 16px;
+    color: #fff;
+    background: none;
+    border: none;
+}
+
+.user-header-buttons button:focus {
+    outline: none;
+}
+
+.user-header-buttons a {
+    padding: 5px;
+    font-size: 16px;
+    color: #fff;
+    text-align: center;
+}
+
+.user-header-buttons button:hover, .user-header-buttons a:hover {
+    color: #d4e741;
+    text-decoration: none;
+}
+
+.user h2 {
+    padding: 5px;
+    margin: 0;
+    font-size: 1.5rem;
+}
+
+.user h3, .user h4 {
+    margin: 0;
+    color: #e5e5e5;
+}
+
+.user h3 {
+    margin-bottom: 10px;
+}
+
+.user p {
+    margin: 0;
+}
+
+.user-license {
+    background-color: #3a3f44;
+    border: 1px solid #3a3f44;
+    border-radius: 3px;
+    margin-top: 30px;
+}
+
+.license {
+    display: flex;
+    padding: 5px;
+    background-color: #3a3f44;
+    border-radius: 3px;
+    margin-bottom: 5px;
+}
+
+.license-text, .license-button {
+    display: flex;
+    flex: 1;
+}
+
+.license-button {
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.license-button a {
+    font-size: 14px;
+    text-decoration: none;
+    margin-right: 20px;
+}
+
+.license-subject {
+    border: 1px solid #51595f;
+    text-align: left;
+    padding: 8px;
+    background-color: #7a8287;
+}
+
+.sexy_line { 
+    display:block;
+    border:none;
+    color:white;
+    height:1px;
+    background:#ddd;
+}
+
+.license-buttons {
+    display: flex;
+    justify-content: space-around;
+    padding: 10px;
+}
+
+.license-buttons i {
+    width: 20px;
+    height: 20px;
+    line-height: 20px;
+    margin-right: 5px;
+}
+
+.license-buttons a:hover {
+    text-decoration: none;
+}
