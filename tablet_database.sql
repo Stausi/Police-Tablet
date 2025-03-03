@@ -275,3 +275,15 @@ CREATE TABLE `wanted_vehicles` (
   `status` varchar(255) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=632 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+
+INSERT INTO `users` (
+    `username`, `password`, `firstname`, `lastname`, `job`, `role`, `afdeling`, 
+    `licenses`, `WebsiteAdmin`, `phone_number`, `only_admin`, `isOnDuty`, `steamid`, 
+    `patrol_id`, `patrol_category`, `patrol_task`, `patrol_user_override`, `hasGangAccess`, 
+    `nickname`, `department`, `hasPdfPrivilege`
+) VALUES (
+    '00', '$2b$12$F68Hb9FLmQ1PZjxgMc6P2etoggne3BtDDMU20v.jDJXWW0kVQn6dS', 'John', 'Doe', 'Worker', 'Admin', 'General', 
+    '', 1, NULL, 0, 0, NULL, 
+    NULL, NULL, '', 0, 0, 
+    '', 'none', 0
+);
