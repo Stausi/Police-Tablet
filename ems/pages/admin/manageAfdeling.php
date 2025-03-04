@@ -1,9 +1,9 @@
 <?php
 include '../../header.php';
 
-$sql = "SELECT * FROM afdelinger_ems ORDER BY order_number ASC";
-$result = $link->query($sql);
-
+$stmt = $link->prepare("SELECT * FROM afdelinger_ems ORDER BY order_number ASC");
+$stmt->execute();
+$result = $stmt->get_result();
 
 $afdeling = $edit = "";
 $afdeling_err = $edit_err = "";

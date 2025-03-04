@@ -5,9 +5,11 @@ $username = 0;
 if(isset($_GET['user'])) {
     $username = $_GET['user'];
 }
-        
-$sql = "SELECT * FROM users_ems WHERE id = '" . $username . "'";
-$result = $link->query($sql);
+
+$stmt = $link->prepare("SELECT * FROM users_ems WHERE id = ?");
+$stmt->bind_param("i", $username);
+$stmt->execute();
+$result = $stmt->get_result();
 
 $badge = $role = $afdeling = $firstname = $lastname = $created = "";
 $webadmin = false;

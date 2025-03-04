@@ -2,8 +2,10 @@
 include '../header.php';
 
 $player = $_GET['player'];
-$sql = "SELECT * FROM population_ems WHERE id='" . $player . "'";
-$result = $link->query($sql);
+$stmt = $link->prepare("SELECT * FROM population_ems WHERE id = ?");
+$stmt->bind_param("i", $player);
+$stmt->execute();
+$result = $stmt->get_result();
 
 $player_err = $note_err = "";
 $name = $dob = $height = $sex = $phone = $note = "";
@@ -162,8 +164,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         ?>
                     </tr>
                         <?php
-                        $sql = "SELECT * FROM population_psykjournals WHERE pid ='" . $player . "'";
-                        $result = $link->query($sql);
+                        $stmt = $link->prepare("SELECT * FROM population_psykjournals WHERE pid = ?");
+                        $stmt->bind_param("i", $player);
+                        $stmt->execute();
+                        $result = $stmt->get_result();
+
                         while($row = $result->fetch_assoc()) { 
                         ?>
                         <tr>

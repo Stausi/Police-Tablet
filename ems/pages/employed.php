@@ -1,8 +1,9 @@
 <?php
 include '../header.php';
 
-$sql = "SELECT * FROM afdelinger_ems ORDER BY order_number ASC";
-$result = $link->query($sql);
+$stmt = $link->prepare("SELECT * FROM afdelinger_ems ORDER BY order_number ASC");
+$stmt->execute();
+$result = $stmt->get_result();
 
 $isWebsiteAdmin = $_SESSION["websiteadmin"] ?? false;
 ?>
@@ -24,8 +25,11 @@ $isWebsiteAdmin = $_SESSION["websiteadmin"] ?? false;
                 <div class="afdeling" id="<?php echo $row['afdeling'] ?>">
                     <h2><?php echo $row['afdeling'] ?></h2>
                     <?php
-                        $usersql = "SELECT * FROM users_ems WHERE afdeling = '" . $row['afdeling'] . "' AND only_admin = 0 ORDER BY username ASC";
-                        $userresult = $link->query($usersql);
+                        $usersql = "SELECT * FROM users_ems WHERE afdeling = ? AND only_admin = 0 ORDER BY username ASC";
+                        $userstmt = $link->prepare($usersql);
+                        $userstmt->bind_param("s", $row['afdeling']);
+                        $userstmt->execute();
+                        $userresult = $userstmt->get_result();
                     ?>
                     <div class="users">
                         <?php while($userrow = $userresult->fetch_assoc()) { ?>

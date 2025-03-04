@@ -140,8 +140,11 @@ if (isset($_GET['action'])) {
                     $vis_sigtelser = implode('- ', $sigtelser);
                 }
 
-                $sql_player = "SELECT * FROM population WHERE id='" . $row['target_id'] . "'";
-                $result_player = $link->query($sql_player);
+                $stmt = $link->prepare("SELECT * FROM population WHERE id = ?");
+                $stmt->bind_param("i", $row['target_id']);
+                $stmt->execute();
+                $result_player = $stmt->get_result();
+
                 $target_name = "";
                 $image_path = "";
 

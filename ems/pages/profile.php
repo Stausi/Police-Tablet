@@ -19,17 +19,27 @@ $afdeling = $_SESSION['afdeling'];
 $password = $confirm_password = $number_err = "";
 $password_err = $confirm_password_err = $number = "";
 
-if(isset($_GET['user'])) {
+if (isset($_GET['user'])) {
     $target_user = $_GET['user'];
-    $sql = "SELECT * FROM users WHERE id='" . $target_user . "'";
-    $result = $link->query($sql);
 
-    while($row = mysqli_fetch_array($result)) {
+    if (!ctype_digit($target_user)) {
+        die("Invalid user ID.");
+    }
+
+    $sql = "SELECT id, firstname, lastname, role, afdeling FROM users WHERE id = ?";
+    $stmt = $link->prepare($sql);
+    $stmt->bind_param("i", $target_user);
+    $stmt->execute();
+    $result = $stmt->get_result();
+
+    if ($row = $result->fetch_assoc()) {
         $user = $row['id'];
-        $firstname = $row['firstname'];
-        $lastname = $row['lastname'];
-        $role = $row['role'];
-        $afdeling = $row['afdeling'];
+        $firstname = htmlspecialchars($row['firstname']);
+        $lastname = htmlspecialchars($row['lastname']);
+        $role = htmlspecialchars($row['role']);
+        $afdeling = htmlspecialchars($row['afdeling']);
+    } else {
+        die("User not found.");
     }
 }
 

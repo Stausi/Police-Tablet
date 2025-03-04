@@ -9,8 +9,10 @@ $erkender = isset($_GET['erkender']) ? $_GET['erkender'] : 0;
 
 $conditional = isset($_GET['conditional']) ? $_GET['conditional'] : 0;
 
-$sql = "SELECT * FROM population WHERE id='" . $player . "'";
-$result = $link->query($sql);
+$stmt = $link->prepare("SELECT * FROM population WHERE id = ?");
+$stmt->bind_param("i", $player);
+$stmt->execute();
+$result = $stmt->get_result();
 
 $firstname = $dob = "";
 $phone_number = 0;
@@ -76,8 +78,10 @@ if (isset($_GET['cases']) && isset($_GET['klip']) && isset($_GET['ticket']) && i
                     $sigtet = $sigtet .= " - Ubetinget frakendelse af kørekort";
                 }
             } else {
-                $sql = "SELECT * FROM tickets WHERE id = " . $key;
-                $result = $link->query($sql);
+                $stmt = $link->prepare("SELECT * FROM tickets WHERE id = ?");
+                $stmt->bind_param("i", $key);
+                $stmt->execute();
+                $result = $stmt->get_result();
 
                 if (empty($value['customValues'])) {
                     $count = $value['count'];
@@ -204,8 +208,10 @@ if (isset($_GET['cases']) && isset($_GET['klip']) && isset($_GET['ticket']) && i
                     $sigtet = $sigtet .= " - Ubetinget frakendelse af kørekort";
                 }
             } else {
-                $sql = "SELECT * FROM tickets WHERE id = " . $key;
-                $result = $link->query($sql);
+                $stmt = $link->prepare("SELECT * FROM tickets WHERE id = ?");
+                $stmt->bind_param("i", $key);
+                $stmt->execute();
+                $result = $stmt->get_result();
 
                 if (empty($value['customValues'])) {
                     $count = $value['count'];
@@ -292,8 +298,10 @@ if (isset($_GET['cases']) && isset($_GET['klip']) && isset($_GET['ticket']) && i
                     $sigtet = $sigtet .= " - Ubetinget frakendelse af kørekort";
                 }
             } else {
-                $sql = "SELECT * FROM tickets WHERE id = " . $key;
-                $result = $link->query($sql);
+                $stmt = $link->prepare("SELECT * FROM tickets WHERE id = ?");
+                $stmt->bind_param("i", $key);
+                $stmt->execute();
+                $result = $stmt->get_result();
 
                 if (empty($value['customValues'])) {
                     $count = $value['count'];
@@ -1163,8 +1171,10 @@ if (isset($_GET['cases']) && isset($_GET['klip']) && isset($_GET['ticket']) && i
 <?php
 if (isset($_GET['case'])) {
     $case_id = $_GET['case'];
-    $sql = "SELECT * FROM population_cases WHERE id = " . $case_id;
-    $result_case = $link->query($sql);
+    $stmt = $link->prepare("SELECT * FROM population_cases WHERE id = ?");
+    $stmt->bind_param("s", $case_id);
+    $stmt->execute();
+    $result_case = $stmt->get_result();
 
     if ($result_case->num_rows > 0) {
         $row = $result_case->fetch_assoc();
@@ -1173,8 +1183,10 @@ if (isset($_GET['case'])) {
         echo '<script>';
 
         foreach ($cases as $key => $value) {
-            $sql = "SELECT * FROM tickets WHERE id = " . $key;
-            $result = $link->query($sql);
+            $stmt = $link->prepare("SELECT * FROM tickets WHERE id = ?");
+            $stmt->bind_param("i", $key);
+            $stmt->execute();
+            $result = $stmt->get_result();
 
             while ($row = $result->fetch_assoc()) {
                 $ticket = ($row['ticket'] != NULL) ? $row['ticket'] : 0;

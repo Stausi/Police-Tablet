@@ -26,8 +26,10 @@ $password_err = $confirm_password_err = $number = "";
 
 if(isset($_GET['user'])) {
     $target_user = $_GET['user'];
-    $sql = "SELECT * FROM users WHERE id='" . $target_user . "'";
-    $result = $link->query($sql);
+    $stmt = $link->prepare("SELECT * FROM users WHERE id = ?");
+    $stmt->bind_param("i", $target_user);
+    $stmt->execute();
+    $result = $stmt->get_result();
 
     while($row = mysqli_fetch_array($result)) {
         $user = $row['id'];

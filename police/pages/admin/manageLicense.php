@@ -18,8 +18,10 @@ if(isset($_GET['licenseid'])) {
     $licenseid = $_GET['licenseid'];
 }
 
-$sql = "SELECT * FROM licenses WHERE id='" . $licenseid . "'";
-$result = $link->query($sql);
+$stmt = $link->prepare("SELECT * FROM licenses WHERE id = ?");
+$stmt->bind_param("i", $licenseid);
+$stmt->execute();
+$result = $stmt->get_result();
 
 $subjectSql = "SELECT * FROM licenses_subjects ORDER BY order_number ASC";
 $subjectResult = $link->query($subjectSql);

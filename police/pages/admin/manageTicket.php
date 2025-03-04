@@ -15,8 +15,10 @@ if(isset($_GET['ticketid'])) {
     $ticketid = $_GET['ticketid'];
 }
 
-$sql = "SELECT * FROM tickets WHERE id='" . $ticketid . "'";
-$result = $link->query($sql);
+$stmt = $link->prepare("SELECT * FROM tickets WHERE id = ?");
+$stmt->bind_param("i", $ticketid);
+$stmt->execute();
+$result = $stmt->get_result();
 
 $ticketSql = "SELECT * FROM punishment";
 $ticketResult = $link->query($ticketSql);

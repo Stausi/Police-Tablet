@@ -18,11 +18,12 @@ if ($_SESSION["job"] != 'police') {
 
 function hasLicense($link, $username, $license)
 {
-    $sql = "SELECT * FROM users WHERE id='" . $username . "'";
-    $result = $link->query($sql);
+    $stmt = $link->prepare("SELECT * FROM users WHERE id = ?");
+    $stmt->bind_param("i", $username);
+    $stmt->execute();
+    $result = $stmt->get_result();
 
     $licenses = "";
-
     while ($row = $result->fetch_assoc()) {
         $licenses = $row['licenses'];
     }

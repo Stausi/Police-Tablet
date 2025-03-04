@@ -1,7 +1,6 @@
 <?php
 include '../header.php';
 
-// Sikkerhed for at sikre, at kun admins eller brugere med gang adgang kan tilgå siden
 $isWebsiteAdmin = $_SESSION["websiteadmin"] ?? false;
 $hasGangAccess = $_SESSION["hasGangAccess"] ?? false;
 
@@ -10,9 +9,9 @@ if (!$isWebsiteAdmin && !$hasGangAccess) {
     exit;
 }
 
-
-$sql = "SELECT * FROM gangs ORDER BY order_number ASC";
-$result = $link->query($sql);
+$stmt = $link->prepare("SELECT id, gang_name, created_by FROM gangs ORDER BY order_number ASC");
+$stmt->execute();
+$result = $stmt->get_result();
 ?>
 
 <main>
@@ -24,28 +23,32 @@ $result = $link->query($sql);
             </div>
         </div>
         <div class="mid-line" style="margin-bottom: 20px"></div>
+
         <?php
-            while($row = $result->fetch_assoc()) {
-                echo '<div class="afdelinger">';
-                    echo '<div class="afdeling" id="' . $row["gang_name"] . '">';
-                        echo '<div class="gang-header">';
-                            echo '<h2>' . $row["gang_name"] . '</h2>';
-                            echo '<h2 class="created">Oprettet af: ' . $row["created_by"] . '</h2>';
-                        echo '</div>';
+        while ($row = $result->fetch_assoc()) {
+            echo '<div class="afdelinger">';
+                echo '<div class="afdeling" id="' . htmlspecialchars($row["gang_name"]) . '">';
+                    echo '<div class="gang-header">';
+                        echo '<h2>' . htmlspecialchars($row["gang_name"]) . '</h2>';
+                        echo '<h2 class="created">Oprettet af: ' . htmlspecialchars($row["created_by"]) . '</h2>';
+                    echo '</div>';
 
-                        $usersql = "SELECT * FROM population WHERE gang = '" . $row['id'] . "' ORDER BY name ASC";
-                        $userresult = $link->query($usersql);
+                    $usersql = "SELECT id, name, dob, phone_number FROM population WHERE gang = ? ORDER BY name ASC";
+                    $userstmt = $link->prepare($usersql);
+                    $userstmt->bind_param("s", $row['id']);
+                    $userstmt->execute();
+                    $userresult = $userstmt->get_result();
 
-                        echo '<div class="gang-users">';
-                            while($userrow = $userresult->fetch_assoc()) {
-                                echo '<a href="player.php?player=' . $userrow['id'] . '">';
-                                    echo '<i class="fas fa-plus"></i><h3>' . $userrow['name'] . ' - ' . $userrow['dob'] . ' - ' . $userrow['phone_number'] . '</h3>';
-                                echo '</a>';
-                            }
-                        echo '</div>';
+                    echo '<div class="gang-users">';
+                        while ($userrow = $userresult->fetch_assoc()) {
+                            echo '<a href="player.php?player=' . htmlspecialchars($userrow['id']) . '">';
+                                echo '<i class="fas fa-plus"></i><h3>' . htmlspecialchars($userrow['name']) . ' - ' . htmlspecialchars($userrow['dob']) . ' - ' . htmlspecialchars($userrow['phone_number']) . '</h3>';
+                            echo '</a>';
+                        }
                     echo '</div>';
                 echo '</div>';
-            }
+            echo '</div>';
+        }
         ?>
     </div>
 </main>

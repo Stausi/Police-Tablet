@@ -14,7 +14,7 @@ $username = $_SESSION['username'] ?? '';
 if (!empty($player)) {
     $sql = "SELECT * FROM population WHERE id=?";
     if ($stmt = $link->prepare($sql)) {
-        $stmt->bind_param("s", $player);
+        $stmt->bind_param("i", $player);
         $stmt->execute();
         $result = $stmt->get_result();
         if ($row = $result->fetch_assoc()) {
@@ -32,18 +32,25 @@ if (!empty($player)) {
 $player = $_GET['player'];
 $note_err = $playerid_err = "";
 
-$sql = "SELECT * FROM population WHERE id='" . $player . "' ";
-$result = $link->query($sql);
+$stmt = $link->prepare("SELECT * FROM population WHERE id = ?");
+$stmt->bind_param("i", $player);
+$stmt->execute();
+$result = $stmt->get_result();
 
-$sql = "SELECT klip, status FROM population_cases WHERE pid='" . $player . "' AND dato >= DATE(NOW()) - INTERVAL 3 DAY";
-$result2 = $link->query($sql);
+$stmt = $link->prepare("SELECT klip, status FROM population_cases WHERE pid = ? AND dato >= DATE(NOW()) - INTERVAL 3 DAY");
+$stmt->bind_param("i", $player);
+$stmt->execute();
+$result2 = $stmt->get_result();
 
-$sql = "SELECT * FROM population_wanted WHERE target_id='" . $player . "'";
-$result4 = $link->query($sql);
+$stmt = $link->prepare("SELECT * FROM population_wanted WHERE target_id = ?");
+$stmt->bind_param("i", $player);
+$stmt->execute();
+$result4 = $stmt->get_result();
 
-$sql = "SELECT conditional FROM population_cases WHERE pid='" . $player . "' AND dato >= DATE(NOW()) - INTERVAL 3 DAY";
-$result5 = $link->query($sql);
-
+$stmt = $link->prepare("SELECT conditional FROM population_cases WHERE pid = ? AND dato >= DATE(NOW()) - INTERVAL 3 DAY");
+$stmt->bind_param("i", $player);
+$stmt->execute();
+$result5 = $stmt->get_result();
 
 $klip = $height = $number = 0;
 $status = "Ingen aktiv frakendelse";
@@ -454,8 +461,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         ?>
                     </tr>
                     <?php
-                    $sql = "SELECT * FROM population_cases WHERE pid ='" . $player . "' ORDER BY dato DESC, id DESC";
-                    $result = $link->query($sql);
+                    $sql = "SELECT * FROM population_cases WHERE pid = ? ORDER BY dato DESC, id DESC";
+                    $stmt = $link->prepare($sql);
+                    $stmt->bind_param("i", $player);
+                    $stmt->execute();
+                    $result = $stmt->get_result();
                     while ($row = $result->fetch_assoc()) {
                         ?>
                         <tr>

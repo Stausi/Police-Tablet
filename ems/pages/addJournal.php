@@ -18,8 +18,10 @@ $arrival = strftime('%d-%m-%Y %H:%M', time());
 $damage_report = $medicin_given = $damage_assessment = "";
 $reason = $epikrise = $conversation = $medicin_treatment = $psykolog_assessment = "";
 
-$sql = "SELECT * FROM population_ems WHERE id='" . $player . "'";
-$result = $link->query($sql);
+$stmt = $link->prepare("SELECT * FROM population_ems WHERE id = ?");
+$stmt->bind_param("i", $player);
+$stmt->execute();
+$result = $stmt->get_result();
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $journalType = sanitize_input($_POST['journalType']);

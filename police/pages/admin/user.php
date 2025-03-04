@@ -15,8 +15,10 @@ if(isset($_GET['user'])) {
     $username = $_GET['user'];
 }
         
-$sql = "SELECT * FROM users WHERE id = '" . $username . "'";
-$result = $link->query($sql);
+$stmt = $link->prepare("SELECT * FROM users WHERE id = ?");
+$stmt->bind_param("i", $player);
+$stmt->execute();
+$result = $stmt->get_result();
 
 $emneql = "SELECT * FROM licenses_subjects";
 $emneresult = $link->query($emneql);
