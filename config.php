@@ -28,6 +28,7 @@ if (!mysqli_set_charset($link, "utf8")) {
 }
 
 require_once 'vendor/autoload.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . '/init.php';
 
 $departments = [
     'ledelse' => 'Rigspolitiet',
