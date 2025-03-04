@@ -47,7 +47,7 @@ $result5 = $link->query($sql);
 
 $klip = $height = $number = 0;
 $status = "Ingen aktiv frakendelse";
-$name = $dob = $hasFingerprint = $note = $gang = "";
+$name = $dob = $note = $gang = "";
 
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["new_name"])) {
     $new_name = $_POST["new_name"];
@@ -179,7 +179,6 @@ while ($row = mysqli_fetch_array($result)) {
 
     $height = $row['height'];
     $number = $row['phone_number'];
-    $hasFingerprint = ($row['fingerprint'] == 1) ? "JA" : "NEJ";
     $note = ($row['note'] == NULL) ? "Ingen note" : $row['note'];
 }
 
@@ -397,18 +396,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     </div>
                 </div>
                 <div class="info-column">
-                    <div class="info-text">
-                        <h2 class="title">Fingeraftryk: </h2>
-                        <h2 class="title"><?php echo $hasFingerprint ?></h2>
-                    </div>
-
                     <?php if ($_SESSION["afdeling"] != "Advokatledelse" && $_SESSION["afdeling"] != "Dommer"): ?>
                         <div class="info-text">
                             <h2 class="title">Note:</h2>
                             <h2 class="title"><?php echo $note ?></h2>
                         </div>
                     <?php endif; ?>
-
                 </div>
             </div>
         </div>

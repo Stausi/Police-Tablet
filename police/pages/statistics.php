@@ -59,12 +59,6 @@ while ($distribution = $categoryDistributionResult->fetch_assoc()) {
     $categoryDistribution[$distribution['ticketemne']][] = $distribution;
 }
 
-if (empty($categoryDistribution)) {
-    echo "<p>No data found for category distributions.</p>";
-} else {
-    // Proceed with displaying the data
-}
-
 
 $topSigtelserPerEmneSql = "
 SELECT p.ticketemne, t.sigtelse, COUNT(*) as total_count

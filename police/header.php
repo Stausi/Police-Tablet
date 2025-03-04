@@ -65,19 +65,14 @@ function hasLicense($link, $username, $license)
     <link rel="stylesheet" href="/assets/css/users.css?v=1.06">
     <link rel="stylesheet" href="/assets/css/player.css?v=1.08">
 
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js"
-        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
-        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-        crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
-        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-        crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/f3dcfdbac4.js" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.min.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/locale/da.js"></script>
-    <script type="text/javascript"
-        src="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.0.1/js/tempusdominus-bootstrap-4.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.0.1/js/tempusdominus-bootstrap-4.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9.10.8/dist/sweetalert2.all.min.js"></script>
 
     <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -144,84 +139,85 @@ function hasLicense($link, $username, $license)
                         ?>
 
                     <?php endif; ?>
-                            <!-- Vis for alle undtagen 'Advokatledelse' -->
-                    <?php if (!isset($_SESSION['afdeling']) || $_SESSION['afdeling'] != "Advokatledelse"): ?>
-                    <li><a class="nav-link" href="/police/pages/fleet.php"><i class="fas fa-road"></i> Flådestyring</a>
-                        </li>
-
-                    <?php endif; ?>
                 </ul>
             </nav>
             <div class="login">
                 <ul class="login-links">
-                    <li><a class="login-link" href="/police/pages/profile.php"><i class="fas fa-user"></i> Min
-                            Profil</a></li>
-                    <li><a class="login-link" href="/police/pages/logout.php"><i class="fas fa-sign-out-alt"></i> Log
-                            ud</a></li>
+                    <li>
+                        <a class="login-link" href="/police/pages/profile.php"><i class="fas fa-user"></i> Min Profil</a>
+                    </li>
+                    <li>
+                        <a class="login-link" href="/police/pages/logout.php"><i class="fas fa-sign-out-alt"></i> Log ud</a>
+                    </li>
                 </ul>
             </div>
         </div>
     </header>
 
     <script>
-    document.addEventListener('DOMContentLoaded', function () {
-        var menuButton = document.querySelector('#menuDropdown').parentNode.querySelector('.dropbtn');
-        var menuDropdown = document.getElementById("menuDropdown");
-        var policeButton = document.querySelector('#wantedDropdown').parentNode.querySelector('.dropbtn');
-        var wantedDropdown = document.getElementById("wantedDropdown");
+        document.addEventListener('DOMContentLoaded', function () {
+            var menuButton = document.querySelector('#menuDropdown').parentNode.querySelector('.dropbtn');
+            var menuDropdown = document.getElementById("menuDropdown");
+            var policeButton = document.querySelector('#wantedDropdown').parentNode.querySelector('.dropbtn');
+            var wantedDropdown = document.getElementById("wantedDropdown");
 
-        function toggleDropdown(dropdown) {
-            dropdown.classList.toggle("show");
-        }
-
-        function hideDropdown(dropdown) {
-            dropdown.classList.remove("show");
-        }
-
-        menuButton.onmouseover = function () {
-            toggleDropdown(menuDropdown);
-        };
-        menuButton.onmouseleave = function (event) {
-            setTimeout(function () {  
-                if (!menuDropdown.contains(event.relatedTarget)) {
-                    hideDropdown(menuDropdown);
-                }
-            }, 300);
-        };
-        menuDropdown.onmouseleave = function (event) {
-            setTimeout(function () {
-                if (!menuButton.contains(event.relatedTarget)) {
-                    hideDropdown(menuDropdown);
-                }
-            }, 300);
-        };
-
-        policeButton.onclick = function () {
-            window.location.href = '/police/pages/wanted.php';  
-        };
-        policeButton.onmouseover = function () {
-            toggleDropdown(wantedDropdown); 
-        };
-        policeButton.onmouseleave = function (event) {
-            setTimeout(function () {
-                if (!wantedDropdown.contains(event.relatedTarget)) {
-                    hideDropdown(wantedDropdown);
-                }
-            }, 300);
-        };
-        wantedDropdown.onmouseleave = function (event) {
-            setTimeout(function () {
-                if (!policeButton.contains(event.relatedTarget)) {
-                    hideDropdown(wantedDropdown);
-                }
-            }, 300);
-        };
-
-        window.onclick = function (event) {
-            if (!event.target.matches('.dropbtn')) {
-                hideDropdown(menuDropdown);
-                hideDropdown(wantedDropdown);
+            function toggleDropdown(dropdown) {
+                dropdown.classList.toggle("show");
             }
-        };
-    });
-</script>
+
+            function hideDropdown(dropdown) {
+                dropdown.classList.remove("show");
+            }
+
+            menuButton.onmouseover = function () {
+                toggleDropdown(menuDropdown);
+            };
+
+            menuButton.onmouseleave = function (event) {
+                setTimeout(function () {  
+                    if (!menuDropdown.contains(event.relatedTarget)) {
+                        hideDropdown(menuDropdown);
+                    }
+                }, 300);
+            };
+
+            menuDropdown.onmouseleave = function (event) {
+                setTimeout(function () {
+                    if (!menuButton.contains(event.relatedTarget)) {
+                        hideDropdown(menuDropdown);
+                    }
+                }, 300);
+            };
+
+            policeButton.onclick = function () {
+                window.location.href = '/police/pages/wanted.php';  
+            };
+
+            policeButton.onmouseover = function () {
+                toggleDropdown(wantedDropdown); 
+            };
+
+            policeButton.onmouseleave = function (event) {
+                setTimeout(function () {
+                    if (!wantedDropdown.contains(event.relatedTarget)) {
+                        hideDropdown(wantedDropdown);
+                    }
+                }, 300);
+            };
+            
+            wantedDropdown.onmouseleave = function (event) {
+                setTimeout(function () {
+                    if (!policeButton.contains(event.relatedTarget)) {
+                        hideDropdown(wantedDropdown);
+                    }
+                }, 300);
+            };
+
+            window.onclick = function (event) {
+                if (!event.target.matches('.dropbtn')) {
+                    hideDropdown(menuDropdown);
+                    hideDropdown(wantedDropdown);
+                }
+            };
+        });
+    </script>

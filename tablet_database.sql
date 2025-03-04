@@ -31,17 +31,6 @@ CREATE TABLE `gangs` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=31 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
-CREATE TABLE `krimi` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `firstname` varchar(255) NOT NULL,
-  `lastname` varchar(255) NOT NULL,
-  `dateofbirth` varchar(255) NOT NULL,
-  `sex` varchar(255) NOT NULL,
-  `height` int(11) DEFAULT NULL,
-  `phone_number` int(11) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3654 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
 CREATE TABLE `licenses` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `subject` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
@@ -56,34 +45,16 @@ CREATE TABLE `licenses_subjects` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_danish_ci;
 
-CREATE TABLE `players` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `player_id` int(11) NOT NULL,
-  `dato` timestamp NOT NULL DEFAULT current_timestamp(),
-  `userid` int(11) NOT NULL,
-  `username` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `sigtet` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `ticket` int(11) NOT NULL DEFAULT 0,
-  `prison` int(11) NOT NULL DEFAULT 0,
-  `klip` int(11) DEFAULT 0,
-  `status` varchar(255) NOT NULL,
-  `comment` text NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=36619 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_danish_ci;
-
 CREATE TABLE `population` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `steamid` varchar(255) NOT NULL,
   `name` varchar(255) NOT NULL,
   `dob` varchar(255) NOT NULL,
   `height` int(11) NOT NULL,
   `sex` varchar(255) NOT NULL,
   `phone_number` int(11) NOT NULL,
-  `fingerprint` tinyint(1) NOT NULL DEFAULT 0,
   `gang` varchar(255) DEFAULT NULL,
   `note` text DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `steamid` (`steamid`)
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=1506 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 CREATE TABLE `population_cases` (
